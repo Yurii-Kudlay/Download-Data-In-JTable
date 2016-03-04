@@ -1,4 +1,4 @@
-package com.sql.jdbc.frame;
+package frame;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;

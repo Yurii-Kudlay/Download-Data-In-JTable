@@ -1,4 +1,4 @@
-package com.sql.jdbc.frame;
+package frame;
 
 import java.awt.Dimension;
 import java.sql.Connection;
@@ -14,21 +14,21 @@ public class Launcher {
 
 	public static void main(String[] args) {
 		
-		SQLiteConnection sqlCon = new SQLiteConnection("org.sqlite.JDBC", "jdbc:sqlite:f:\\eclipse-jee-kepler\\Programing\\Java Class\\DownloadDataInJTable\\CARShop.db");
+		frame.SQLiteConnection sqlCon = new frame.SQLiteConnection("org.sqlite.JDBC", "jdbc:sqlite:resources\\CARShop.db");
 		
 		try{
-			Connection conn = SQLiteConnection.getConnection();
-			TableModel mod = new MyTableModel(conn, "SoldCars");
+			Connection conn = frame.SQLiteConnection.getConnection();
+			TableModel mod = new frame.MyTableModel(conn, "SoldCars");
 			JTable jTable = new JTable(mod);
 			
 			TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(mod);
-			sorter.setComparator(2, new MyComparator ());
+			sorter.setComparator(2, new frame.MyComparator());
 			jTable.setRowSorter(sorter);
-			jTable.setDefaultRenderer(Object.class, new MyTableRenderer());
+			jTable.setDefaultRenderer(Object.class, new frame.MyTableRenderer());
 			JScrollPane scroll = new JScrollPane(jTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 			
 			JFrame frame = new JFrame("DownLoad data in JTable");
-			frame.setMinimumSize(new Dimension(600, 400));
+			frame.setMinimumSize(new Dimension(600, 200));
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.getContentPane().add(scroll);
 			frame.pack();

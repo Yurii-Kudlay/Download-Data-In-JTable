@@ -1,4 +1,4 @@
- package com.sql.jdbc.frame;
+ package frame;
 
 import java.util.Comparator;
 
